@@ -111,7 +111,7 @@ const getHistory = (mode) => {
 // --- Helper Components ---
 
 const OperationIcon = ({ op, className }) => {
-  const props = { className: cn("w-5 h-5 md:w-8 md:h-5 text-neutral-500", className) };
+  const props = { className: cn("w-5 h-5 md:w-8 md:h-8 text-neutral-500", className) };
   switch (op) {
     case "+": return <Plus {...props} />;
     case "-": return <Minus {...props} />;
@@ -266,7 +266,6 @@ const PerformanceGraph = ({ history }) => {
         ticks: { color: 'rgba(148, 163, 184, 0.5)', font: { size: 10 } }
       },
       y: {
-        // Reverse axis: Lower time (better) is at the top
         reverse: true,
         grid: { color: 'rgba(255, 255, 255, 0.05)', drawBorder: false },
         ticks: { color: 'rgba(148, 163, 184, 0.5)', font: { size: 10 } },
@@ -461,9 +460,13 @@ const GameScreen = ({ problems, currentIdx, gameMode, timeLeft, duration, onAnsw
 
   // Maintain focus logic
   useEffect(() => {
-    const timer = setTimeout(() => inputRef.current?.focus(), 10);
-    return () => clearTimeout(timer);
-  }, [currentIdx]);
+    // On mobile, if we are readonly, focus might still show a cursor or highlight
+    // We want the input to be active to receive visual updates
+    if (!isMobile) {
+      const timer = setTimeout(() => inputRef.current?.focus(), 10);
+      return () => clearTimeout(timer);
+    }
+  }, [currentIdx, isMobile]);
 
   // Detection Logic
   useEffect(() => {
@@ -544,15 +547,16 @@ const GameScreen = ({ problems, currentIdx, gameMode, timeLeft, duration, onAnsw
         <input
           ref={inputRef}
           type="number"
-          inputMode={isMobile ? "none" : "decimal"} // Prevent virtual keyboard on mobile
+          readOnly={isMobile} // This prevents the native keyboard on mobile
+          inputMode={isMobile ? "none" : "decimal"} // Double insurance
           value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+          onChange={(e) => !isMobile && setInputValue(e.target.value)} // Only allow typing if not mobile (desktop keyboard)
           placeholder="?"
           className={cn(
             "w-full bg-transparent border-b-4 text-center text-5xl md:text-6xl font-bold py-4 focus:outline-none transition-colors placeholder:text-neutral-800",
             status === 'correct' ? "border-green-500 text-green-500" : status === 'wrong' ? "border-red-500 text-red-500" : "border-neutral-700 text-white focus:border-white"
           )}
-          autoFocus
+          autoFocus={!isMobile} // Only autofocus on desktop
         />
       </div>
 
