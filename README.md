@@ -11,7 +11,7 @@ MathTrainer Pro is an interactive web-based application designed to help users p
 
 ## Screenshot
 
-![MathTrainer Pro Screenshot](assets/screenshot.png)
+![MathTrainer Pro Screenshot](https://ranjan-builds.github.io/mathtrainer-pro/image.jpg)
 
 > _Replace the screenshot path if your screenshot file is located elsewhere in your repo._
 
