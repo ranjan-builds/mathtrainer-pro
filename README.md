@@ -1,16 +1,35 @@
-# React + Vite
+# MathTrainer Pro
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+MathTrainer Pro is an interactive web-based application designed to help users practice and improve their math skills. It offers a variety of quizzes and problem sets across different difficulty levels and topics, aiming to make math learning fun and engaging.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Practice arithmetic, algebra, and more
+- Adaptive difficulty levels
+- Instant feedback and scoring
+- Progress tracking
 
-## React Compiler
+## Screenshot
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+![MathTrainer Pro Screenshot](assets/screenshot.png)
 
-## Expanding the ESLint configuration
+> _Replace the screenshot path if your screenshot file is located elsewhere in your repo._
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Getting Started
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/ranjan-builds/mathtrainer-pro.git
+   cd mathtrainer-pro
+   ```
+
+2. **Install dependencies and start the app** (if applicable):  
+   _Please include framework-specific steps below, e.g., for Node.js or Python._
+
+## Contributing
+
+Contributions and feedback are welcome! Please open an issue or submit a pull request.
+
+---
+
+© 2025 ranjan-builds
